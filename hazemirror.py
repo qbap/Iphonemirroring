@@ -3,14 +3,11 @@ import subprocess
 import shutil
 from pathlib import Path
 
-# File paths
 system_file = "/private/var/db/os_eligibility/eligibility.plist"
-replacement_file = Path(__file__).parent / "eligibility.plist"  # automatically set replacement file to the same directory as this script
+replacement_file = Path(__file__).parent / "eligibility.plist"
 
-# File replacement function
 def replace_files():
     try:
-        # Backup creation
         backup_file = f"{system_file}.backup"
         if not os.path.exists(backup_file):
             shutil.copy(system_file, backup_file)
@@ -23,7 +20,6 @@ def replace_files():
     except Exception as e:
         print(f"Error: {e}")
 
-# Launch the iPhone Mirroring application
 def launch_mirroring_app():
     try:
         # Run with sudo
